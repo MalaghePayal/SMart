@@ -1,0 +1,20 @@
+﻿@model Category
+
+<h1>Add Category</h1>
+<hr />
+
+<form asp-controller="Categories" asp-action="Edit" method="post">
+    <div class="form-group">
+        <input asp-for="CategoryId" type="hidden" />
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span class="text-danger" asp-validation-for="Description"></span>
+        <br />
+        <button type="submit"  >Update</button>
+    </div>
+
+</form>

@@ -1,0 +1,37 @@
+﻿@model ProductViewModel
+
+<h1>Edit Product</h1>
+<hr />
+
+<form asp-controller="Products" asp-action="Edit" method="post">
+    <div class="form-group">
+        <input type="hidden" asp-for="Product.ProductId" />
+        <label asp-for="Product.CategoryId"></label>
+        <select asp-for="Product.CategoryId" class="form-control">
+            <option>- Please Select -</option>
+            @if (Model.CategoriesList != null && Model.CategoriesList.Count() > 0)
+            {
+                @foreach (var cat in Model.CategoriesList)
+                {
+                    <option value="@cat.CategoryId">
+                        @cat.Name
+                    </option>
+                }
+            }
+        </select>
+        <label asp-for="Product.Name"></label>
+        <input asp-for="Product.Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="Product.Name"></span>
+
+        <label asp-for="Product.Price"></label>
+        <input asp-for="Product.Price" class="form-control" />
+        <span class="text-danger" asp-validation-for="Product.Price"></span>
+
+        <label asp-for="Product.Quantity"></label>
+        <input asp-for="Product.Quantity" class="form-control" />
+        <span class="text-danger" asp-validation-for="Product.Quantity"></span>
+        <br />
+        <button type="submit">Edit</button>
+    </div>
+
+</form>
