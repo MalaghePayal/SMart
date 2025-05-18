@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using SMart.Models;
 using Microsoft.AspNetCore.Identity;
+using SMart.Data;
+using SMart.Areas.Identity.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,10 +12,8 @@ builder.Services.AddControllersWithViews();
 
 
 builder.Services.AddDbContext<ApplicationContextDb>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-//builder.Services.AddDefaultIdentity<SMartUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<SMartIdentityContext>();
-//builder.Services.AddDbContext<SMartIdentityContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<SMartIdentityContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDefaultIdentity<SMartIdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<SMartIdentityContext>();
 
 builder.Services.AddRazorPages();
 

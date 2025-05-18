@@ -6,7 +6,7 @@ using SMart.ViewModels;
 
 namespace SMart.Controllers
 {
-   // [Authorize]
+    [Authorize]
     public class SalesController : Controller
     {
         private readonly ApplicationContextDb _context;

@@ -6,7 +6,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SMart.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class TransactionsController : Controller
     {
         private readonly ApplicationContextDb _context;
