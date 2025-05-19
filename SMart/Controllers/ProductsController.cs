@@ -6,7 +6,7 @@ using SMart.ViewModels;
 
 namespace SMart.Controllers
 {
-    [Authorize]
+    [Authorize(Policy= "Inventory")]
     public class ProductsController : Controller
     {
         private readonly ApplicationContextDb _context;

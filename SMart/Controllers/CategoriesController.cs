@@ -4,7 +4,7 @@ using SMart.Models;
 
 namespace SMart.Controllers
 {
-    [Authorize]
+    [Authorize(Policy="Inventory")]
     public class CategoriesController : Controller
     {
         private readonly ApplicationContextDb _context;

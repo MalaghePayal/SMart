@@ -16,7 +16,15 @@ builder.Services.AddDbContext<SMartIdentityContext>(options => options.UseSqlSer
 builder.Services.AddDefaultIdentity<SMartIdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<SMartIdentityContext>();
 
 builder.Services.AddRazorPages();
-
+// Register custom policies for authorization based on claims
+builder.Services.AddAuthorization(options =>
+// Inventory policy(Inventory is name of policy here): allows users with the "Position" claim set to value "InventoryManager"
+//InventoryManager is claim value here.
+{
+    options.AddPolicy("Inventory", p => p.RequireClaim("Position", "InventoryManager"));
+    // Cashiers policy: allows users with the "Position" claim set to "Cashier"
+    options.AddPolicy("Cashiers", p => p.RequireClaim("Position", "Cashier"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
