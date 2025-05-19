@@ -81,5 +81,19 @@ namespace SMart.Controllers
             salesViewModel.CategoriesList = _context.Categories.ToList();
             return View("Index", salesViewModel);
         }
+        public IActionResult GetProductsByCategoryIdPartial(int categoryId)
+        {
+            var products = _context.Products
+                                   .Include(p => p.Category)
+                                   .Where(p => p.CategoryId == categoryId)
+                                   .ToList();
+
+            if (products == null || !products.Any())
+            {
+                return NotFound("No products found for this category.");
+            }
+
+            return PartialView("_GetProductsByCategoryId", products);
+        }
     }
 }

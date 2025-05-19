@@ -71,7 +71,7 @@
         var selectedCategoryId = $("#SelectedCategoryId").val();
         if (selectedCategoryId > 0) 
         {
-            $("#productsPartial").load("/products/GetProductsByCategoryIdPartial", { categoryId: selectedCategoryId });
+            $("#productsPartial").load("/sales/GetProductsByCategoryIdPartial", { categoryId: selectedCategoryId });
             $("#productDetailPartial").html("");
             $("#formSale").hide();
             // you can make seperate function for this common code
@@ -81,7 +81,7 @@
         // Handle category selection
         $("#SelectedCategoryId").on("change", function () {
             var selectedCategoryId = $(this).val();
-            $("#productsPartial").load("/products/GetProductsByCategoryIdPartial", { categoryId: selectedCategoryId });
+            $("#productsPartial").load("/sales/GetProductsByCategoryIdPartial", { categoryId: selectedCategoryId });
             $("#productDetailPartial").html("");
             $("#formSale").hide();
         });
